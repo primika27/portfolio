@@ -2,37 +2,42 @@ import {
   Pagination,
   PaginationContent,
   PaginationItem,
-  PaginationLink,
 } from "@/components/ui/pagination";
-import { TabsTrigger } from "./ui/tabs";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export const title = "Spacious";
 
-const ProjectOverview = () => (
-  <div>
-    {/* <TabsTrigger value="1"></TabsTrigger>
-    <TabsTrigger value="2"></TabsTrigger> */}
-    <Pagination>
-      <PaginationContent className="gap-3">
-        <PaginationItem>
-          <PaginationLink href="" >
-            1
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="" >
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">4</PaginationLink>
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
-  </div>
-);
+const images = [
+  "/img/LoginPage.png",
+  "/img/2FactAuth.png",
+  "/img/DashBoard.png",
+  "/img/OrderEmailUpdate.png",
+];
 
+const ProjectOverview = () => {
+  const [selectedImage, setSelectedImage] = useState(images[0]);
+
+  return (
+    <div>
+      <img src={selectedImage} alt="Visual overview" />
+      <Pagination>
+        <PaginationContent className="gap-3">
+          {images.map((image, index) => (
+            <PaginationItem key={image}>
+              <Button
+                type="button"
+                variant={selectedImage === image ? "outline" : "ghost"}
+                size="icon"
+                onClick={() => setSelectedImage(image)}
+              >
+                {index + 1}
+              </Button>
+            </PaginationItem>
+          ))}
+        </PaginationContent>
+      </Pagination>
+    </div>
+  );
+}
 export default ProjectOverview;

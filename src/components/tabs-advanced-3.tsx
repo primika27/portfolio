@@ -4,8 +4,8 @@ import ProjectOverview from "./pagination-sizes-5";
 export const title = "Nested Tabs";
 
 const MainTab = () => (
-  <Tabs style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }} defaultValue="profile">
-    <TabsList>
+  <Tabs className="main-tabs" style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }} defaultValue="profile">
+    <TabsList className="main-tabs-list">
       <TabsTrigger value="profile">Who am I?</TabsTrigger>
       <TabsTrigger value="projects">Projects</TabsTrigger>
     </TabsList>
@@ -59,7 +59,7 @@ const MainTab = () => (
       <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm">
         <h3 className="mb-4 text-lg font-semibold">Projects</h3>
         <Tabs defaultValue="one">
-          <TabsList>
+          <TabsList className="nested-tabs-list">
             <TabsTrigger value="one">BrokerX</TabsTrigger>
             <TabsTrigger value="two">PasswordVault</TabsTrigger>
           </TabsList>
